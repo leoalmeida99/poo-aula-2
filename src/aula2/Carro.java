@@ -1,5 +1,7 @@
 package aula2;
 
+import java.util.Scanner;
+
 public class Carro {
 	private String modelo;
 	private String marca;
@@ -13,7 +15,6 @@ public class Carro {
 	private boolean ligado = false;
 	
 	public Carro () {
-		System.out.println("criei essa merda sem construtor");
 	}
 	
 //	public Carro(float consumo) {
@@ -35,6 +36,29 @@ public class Carro {
 		this.odometro += vm * tempo;
 		this.tanque -= (vm * tempo) / this.consumoMedio;
 		if(this.tanque < 0) this.tanque = 0;
+	}
+	
+	public Carro criarCarro(Carro car) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Informe o modelo do carro: ");
+		String modelo = sc.nextLine();
+		System.out.println("Informe a marca do carro: ");
+		String marca = sc.nextLine();
+		System.out.println("Informe a cor do carro: ");
+		String cor = sc.nextLine();
+		System.out.println("Informe o odometro do carro: ");
+		float odometro = sc.nextFloat();
+		System.out.println("Informe o consumo médio do carro: ");
+		float consumoM = sc.nextFloat();
+		System.out.println("Informe o tanque do carro: ");
+		float tanque = sc.nextFloat();
+		car.setModelo(modelo);
+		car.setMarca(marca);
+		car.setCor(cor);
+		car.setOdometro(odometro);
+		car.setConsumoMedio(consumoM);
+		car.setTanque(tanque);
+		return car;
 	}
 	
 	public void ligar() {
@@ -99,5 +123,9 @@ public class Carro {
 
 	public void setConsumoMedio(float consumoMedio) {
 		this.consumoMedio = consumoMedio;
+	}
+	@Override
+	public String toString() {
+		return this.modelo + " " + this.marca + " " + this.cor + " " + this.odometro + " " + this.consumoMedio + " " + this.tanque;
 	}
 }
